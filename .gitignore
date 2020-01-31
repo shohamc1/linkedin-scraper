@@ -1,0 +1,6 @@
+env/
+accountinfo.json
+data.json
+geckodriver.log
+main.py
+try.py
