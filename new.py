@@ -2,6 +2,7 @@ from selenium import webdriver
 import time
 from bs4 import BeautifulSoup as bs
 import json
+import connect
 
 with open('accountinfo.json') as f:
     accountinfo = json.load(f)
@@ -40,3 +41,11 @@ for datas in data:
         
         #with open('data.json', 'w') as datafile:
         #    datafile.writelines(datas.get_text())
+
+
+"""
+Current op flow:
+get to your own connections page
+use BS to get all your connections on page 1
+go to connections' connections and call connect.add_people()
+"""
