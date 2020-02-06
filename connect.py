@@ -1,6 +1,6 @@
 from selenium import webdriver
 import time
-from bs4 import BeautifulSoup as bs
+#from bs4 import BeautifulSoup as bs
 import json
 import sys
 
@@ -20,14 +20,30 @@ def add_people (uri):
     password.send_keys(psk)
     loginbutton = driver.find_element_by_class_name('sign-in-form__submit-btn')
     loginbutton.click()
-    uri = str(sys.argv[1])
     driver.get(uri)
 
-    buttons = driver.find_elements_by_xpath('//button[text()="Message"]')
+    buttons = driver.find_elements_by_xpath('//button[text()="Connect"]')
 
     for button in buttons:
         button.click()
         try:
-            driver.find_element_by_xpath('//span[text()="Send now"]') #to handle prompt
+            driver.find_element_by_xpath('//span[text()="Send now"]').click() #to handle prompt
         except:
             print ('Send now button not found')
+
+        print ('Clicked button')
+
+    buttons = driver.find_elements_by_xpath('//span[text()="Connect"]')
+
+    for button in buttons:
+        button.click()
+        try:
+            driver.find_element_by_xpath('//span[text()="Send now"]').click() #to handle prompt
+        except:
+            print ('Send now button not found')
+
+        print ('Clicked button')
+
+if __name__ == "__main__":
+    uri = str(sys.argv[1])
+    add_people(uri)
